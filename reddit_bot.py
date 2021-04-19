@@ -22,6 +22,9 @@ def bot_login():
 def is_a_question(comment, question):
     if '?' not in comment:
         return False
+    
+    if question.lower() not in comment.lower():
+        return False
 
     i1 = comment.lower().find(question)
     i2 = comment.find('?')
@@ -52,9 +55,7 @@ def run_bot(r):
         #identificando pergunta
         for i in range(0, len(qa_data['q'])): # cada conjunto de perguntas
             for question in qa_data['q'][i]: # cada pergunta
-                if question in comment.body.lower() and\
-                    is_a_question(comment.body, question):
-
+                if is_a_question(comment.body, question):
                     # comentando
                     if len(qa_data['a']) > 1:
                         ranIdx = randint(0, len(qa_data['a'][i])-1)

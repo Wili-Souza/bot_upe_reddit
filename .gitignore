@@ -2,6 +2,7 @@
 __pycache__/
 venv/
 instructions.txt
+.vscode
 
 # local data
 best_answers.py
